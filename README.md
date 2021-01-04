@@ -2,9 +2,7 @@
 ## Background: Referenced Bike Sharing Data set problem 
 by Hadi Fanaee-T, Laboratory of Artificial Intelligence and Decision Support (LIAAD), University of Porto
 
-=========================================
-Background 
-=========================================
+**Background**
 
 Bike sharing systems are new generation of traditional bike rentals where whole process from membership, rental and return 
 back has become automatic. Through these systems, user is able to easily rent a bike from a particular position and return 
@@ -18,18 +16,14 @@ of travel, departure and arrival position is explicitly recorded in these system
 a virtual sensor network that can be used for sensing mobility in the city. Hence, it is expected that most of important
 events in the city could be detected via monitoring these data.
 
-=========================================
-Data Set
-=========================================
+**Data Set**
 Bike-sharing rental process is highly correlated to the environmental and seasonal settings. For instance, weather conditions,
 precipitation, day of week, season, hour of the day, etc. can affect the rental behaviors. The core data set is related to  
 the two-year historical log corresponding to years 2011 and 2012 from Capital Bikeshare system, Washington D.C., USA which is 
 publicly available in http://capitalbikeshare.com/system-data. We aggregated the data on two hourly and daily basis and then 
 extracted and added the corresponding weather and seasonal information. Weather information are extracted from http://www.freemeteo.com. 
 
-=========================================
-Associated tasks
-=========================================
+**Associated tasks**
 	- Regression: 
 		Predication of bike rental count hourly or daily based on the environmental and seasonal settings.
 	- Event and Anomaly Detection:  
@@ -37,14 +31,11 @@ Associated tasks
 		For instance, query like "2012-10-30 washington d.c." in Google returns related results to Hurricane Sandy. Some of the important events are 
 		identified in [1]. Therefore the data can be used for validation of anomaly or event detection algorithms as well.
 
-=========================================
-Files
-=========================================
+**Data set**
 	- hour.csv : bike sharing counts aggregated on hourly basis. Records: 17379 hours
 	- day.csv - bike sharing counts aggregated on daily basis. Records: 731 days
-=========================================
-Dataset characteristics
-=========================================	
+
+**Dataset characteristics**	
 Both hour.csv and day.csv have the following fields, except hr which is not available in day.csv
 	- instant: record index
 	- dteday : date
@@ -68,23 +59,9 @@ Both hour.csv and day.csv have the following fields, except hr which is not avai
 	- registered: count of registered users
 	- cnt: count of total rental bikes including both casual and registered
 	
-=========================================
-Reference
-=========================================
+**Reference**
 [1] Fanaee-T, Hadi, and Gama, Joao, "Event labeling combining ensemble detectors and background knowledge", Progress in Artificial Intelligence (2013): pp. 1-15, Springer Berlin Heidelberg, doi:10.1007/s13748-013-0040-3.
 
-@article{
-	year={2013},
-	issn={2192-6352},
-	journal={Progress in Artificial Intelligence},
-	doi={10.1007/s13748-013-0040-3},
-	title={Event labeling combining ensemble detectors and background knowledge},
-	url={http://dx.doi.org/10.1007/s13748-013-0040-3},
-	publisher={Springer Berlin Heidelberg},
-	keywords={Event labeling; Event detection; Ensemble learning; Background knowledge},
-	author={Fanaee-T, Hadi and Gama, Joao},
-	pages={1-15}
-}
 ## Implementation Approach
 ### Build Model 
 * Sigmoid activation function
@@ -102,7 +79,6 @@ Experimented changing each hyperparameter exclusively. When increasing epochs, t
 ### Final Results
 The training loss is below 0.09 and the validation loss is below 0.18.
 ## Test Result Summary 
-|------------------------------------------------------------------------|
 |                          Test Result Summary                           |
 |------------------------------------------------------------------------|
 |* Produces good results when running the network on full data            |
