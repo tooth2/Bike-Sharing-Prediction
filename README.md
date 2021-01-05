@@ -24,6 +24,7 @@ Bike-sharing rental process is highly correlated to the environmental and season
 	For instance, query like "2012-10-30 washington d.c." in Google returns related results to Hurricane Sandy. Some of the important events are identified in [1]. Therefore the data can be used for validation of anomaly or event detection algorithms as well.
 
 **Data set**
+This dataset has the number of riders for each hour of each day from January 1 2011 to December 31 2012. The number of riders is split between casual and registered, summed up in the cnt column. Looking at the data characteristics, there are information about temperature, humidity, and windspeed, all of which are likely affecting the number of riders. 
 - hour.csv : bike sharing counts aggregated on hourly basis. Records: 17379 hours
 - day.csv - bike sharing counts aggregated on daily basis. Records: 731 days
 
@@ -54,22 +55,33 @@ Both hour.csv and day.csv have the following fields, except hr which is not avai
 **Reference**
 [1] Fanaee-T, Hadi, and Gama, Joao, "Event labeling combining ensemble detectors and background knowledge", Progress in Artificial Intelligence (2013): pp. 1-15, Springer Berlin Heidelberg
 
-## Implementation Approach
-### Architecture
+## Network Architecture 
+The network has two layers, a hidden layer and an output layer. The hidden layer use the sigmoid function for activations. The output layer has only one node and is used for the regression, the output of the node is the same as the input of the node. The activation function takes the input signal and generates an output signal, but takes into account the threshold, is sigmoid activation function here. 
+> 15 hidden nodes and 1 output nodes with Sigmoid activation function
+```python
+self.activation_function = lambda x : 1 / (1 + np.exp(-x))
+```
+### Forward Propagation  
+All of the outputs from one layer become inputs to the neurons on the next layer
 
-### Build Model 
-* Sigmoid activation function
-### Backward Pass
+### Backwpropagation
+In this neural network , the weights propagates signals forward from the input to the output layers. Also, the weights propagates error backwards from the output back into the network to update previous weights. 
 * Batch Weight Change
-* Updating the weights : Updates to both the input-to-hidden and hidden-to-output weights
-### Forward Pass 
-* Forward Pass
+* Updating the weights : Updates on gradient descent step to both the input-to-hidden and hidden-to-output weights
+
 ### Hyperparameter Tuning
+The strategy is to find hyperparameters such that the error on the training set is low, but avoiding overfitting to the data. 
+- If network has too many hidden nodes, it can become overly specific to the training set and will fail to generalize to the validation set.
+- The more iterations, the better the model will fit the data. However, this process can have sharply diminishing returns and can waste computational resources in case of too many iterations. So ideal number of iterations would be the network has a low training loss, and the validation loss is at a minimum. The ideal number of iterations would be a level that stops shortly after the validation loss is no longer decreasing. 
+- Regarding to learning rate, if this is too big, the weights tend to explode and the network fails to fit the data. The lower the learning rate, the smaller the steps are in the weight updates and the longer it takes for the neural network to converge.   
+
 * Number of epochs: 15000 , Tried between 50 and 15000
 * Number of hidden units: 15, Tried between 5 and 100
 * Learning rate: 0.15, Tried between 0.05 and 5
 * Output nodes: 1 There is only one output needed 
+
 Experimented changing each hyperparameter exclusively. When increasing epochs, the loss decreases though, I've tried to optimize the difference between training loss and validation loss would be the minimal. The bigger epochs could fall into overfitting, the bigger hidden units as well. To generalize model, I chose hidden units 15 to make the model more general to avoid overfitting. Bigger learning rate can fall into osciating results, so that I tried smaller learning rates. 
+
 ### Final Results
 The training loss is below 0.09 and the validation loss is below 0.18. Here are the performance graph of training loss and validation loss.
 ![performance](trainingloss.png)
@@ -90,4 +102,4 @@ The training loss is below 0.09 and the validation loss is below 0.18. Here are 
 
 ## Prediction result
 ![testing result](prediction.png)
-Regarding to miss predicting data, there is a strong correlation between bike renting and seansoal data such as weather or holiday season. From Dec 22 to Dec 31, especially it's Christmas season, and data does not show similar pattern before/after Dec. 22. However, prediction model is trained/optimized based on normal days so that, unusual/unseen pattern cannot be accurately predictable. To improve this model,"holiday" value from two csv files should be adjusted before christmas till new years day or "seasonint" value should be adjusted to reflect "special holiday seanson" from Chirstmas even to New Years Eve. Further more At least a couple more years data collection would be helpful to predict christmas holiday rental pattern.
+The test data set is the last approximately 21 days to predict and comapred with actual data record which is data from Dec11 , 2012 to Dec 31 2012. Regarding to miss predicting data, there is a strong correlation between bike renting and seansoal data such as weather or holiday season. From Dec 22 to Dec 31, especially it's Christmas season, and data does not show similar pattern before/after Dec. 22. However, prediction model is trained/optimized based on normal days so that, unusual/unseen pattern cannot be accurately predictable. To improve this model,"holiday" value from two csv files should be adjusted before christmas till new years day or "seasonint" value should be adjusted to reflect "special holiday seanson" from Chirstmas even to New Years Eve. Further more At least a couple more years data collection would be helpful to predict christmas holiday rental pattern.
