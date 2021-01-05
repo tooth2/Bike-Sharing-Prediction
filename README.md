@@ -93,7 +93,7 @@ The training loss is below 0.09 and the validation loss is below 0.18. Here are 
 | Forward pass/Backpropagation implementation                           |
 | Update_weights implementation running on training                          |
 | Hyperparameters are optimized: learning_rate , number of epochs is reasonable , number of hidden nodes  |
-| Final training loss is 0.67 and the validation loss is below than 0.18 |
+| Final training loss is 0.064 and the validation loss is below than 0.155 |
 
 ## Prediction result
 <img src="prediction.png" alt="prediction" width="400"/>
