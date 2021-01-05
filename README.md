@@ -86,20 +86,14 @@ Experimented changing each hyperparameter exclusively. When increasing epochs, t
 ### Final Results
 The training loss is below 0.09 and the validation loss is below 0.18. Here are the performance graph of training loss and validation loss.
 <img src="trainingloss.png" alt="training loss" width="400"/>
-## Test Result Summary 
-|                          Test Result Summary                           |
+## Summary 
+|                         Project Result Summary                           |
 |------------------------------------------------------------------------|
-| Produces good results when running the network on full data            |
-| The activation function is a sigmoid                                   |
-| The backpropagation implementation is correct                          |
-| The forward pass implementation is correct                             |
-| The learning_rate is reasonable                                        |
-| The number of epochs is reasonable                                     |
-| The number of hidden nodes is reasonable                               |
-| The number of output nodes is correct                                  |
-| The run method is correct                                              |
-| The update_weights implementation is correct                           |
-| The weights are updated correctly on training                          |
+| Sigmoid activation function implementation                                |
+| Forward pass/Backpropagation implementation                           |
+| Update_weights implementation running on training                          |
+| Hyperparameters are optimized: learning_rate , number of epochs is reasonable , number of hidden nodes  |
+| Final training loss is 0.67 and the validation loss is below than 0.18 |
 
 ## Prediction result
 <img src="prediction.png" alt="prediction" width="400"/>
