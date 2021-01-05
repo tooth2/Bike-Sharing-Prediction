@@ -56,7 +56,7 @@ Both hour.csv and day.csv have the following fields, except hr which is not avai
 [1] Fanaee-T, Hadi, and Gama, Joao, "Event labeling combining ensemble detectors and background knowledge", Progress in Artificial Intelligence (2013): pp. 1-15, Springer Berlin Heidelberg
 
 ## Network Architecture 
-<img src="neural_network.png" alt="architecture" width="400"/>
+<img src="neural_network.png" alt="architecture" width="300"/>
 The network has two layers, a hidden layer and an output layer. The hidden layer use the sigmoid function for activations. The output layer has only one node and is used for the regression, the output of the node is the same as the input of the node. The activation function takes the input signal and generates an output signal, but takes into account the threshold, is sigmoid activation function here. 
 > 15 hidden nodes and 1 output nodes with Sigmoid activation function
 ```python
@@ -96,5 +96,5 @@ The training loss is below 0.09 and the validation loss is below 0.18. Here are 
 | Final training loss is 0.064 and the validation loss is below than 0.155 |
 
 ## Prediction result
-<img src="prediction.png" alt="prediction" width="400"/>
+<img src="prediction.png" alt="prediction" width="500"/>
 The test data set is the last approximately 21 days to predict and comapred with actual data record which is data from Dec11 , 2012 to Dec 31 2012. Regarding to miss predicting data, there is a strong correlation between bike renting and seansoal data such as weather or holiday season. From Dec 22 to Dec 31, especially it's Christmas season, and data does not show similar pattern before/after Dec. 22. However, prediction model is trained/optimized based on normal days so that, unusual/unseen pattern cannot be accurately predictable. To improve this model,"holiday" value from two csv files should be adjusted before christmas till new years day or "seasonint" value should be adjusted to reflect "special holiday seanson" from Chirstmas even to New Years Eve. Further more At least a couple more years data collection would be helpful to predict christmas holiday rental pattern.
