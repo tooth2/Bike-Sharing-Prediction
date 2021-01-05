@@ -71,7 +71,8 @@ Both hour.csv and day.csv have the following fields, except hr which is not avai
 * Output nodes: 1 There is only one output needed 
 Experimented changing each hyperparameter exclusively. When increasing epochs, the loss decreases though, I've tried to optimize the difference between training loss and validation loss would be the minimal. The bigger epochs could fall into overfitting, the bigger hidden units as well. To generalize model, I chose hidden units 15 to make the model more general to avoid overfitting. Bigger learning rate can fall into osciating results, so that I tried smaller learning rates. 
 ### Final Results
-The training loss is below 0.09 and the validation loss is below 0.18.
+The training loss is below 0.09 and the validation loss is below 0.18. Here are the performance graph of training loss and validation loss.
+![performance](trainingloss.png)
 ## Test Result Summary 
 |                          Test Result Summary                           |
 |------------------------------------------------------------------------|
@@ -87,5 +88,6 @@ The training loss is below 0.09 and the validation loss is below 0.18.
 | The update_weights implementation is correct                           |
 | The weights are updated correctly on training                          |
 
-## Discussion
+## Prediction result
+![testing result](prediction.png)
 Regarding to miss predicting data, there is a strong correlation between bike renting and seansoal data such as weather or holiday season. From Dec 22 to Dec 31, especially it's Christmas season, and data does not show similar pattern before/after Dec. 22. However, prediction model is trained/optimized based on normal days so that, unusual/unseen pattern cannot be accurately predictable. To improve this model,"holiday" value from two csv files should be adjusted before christmas till new years day or "seasonint" value should be adjusted to reflect "special holiday seanson" from Chirstmas even to New Years Eve. Further more At least a couple more years data collection would be helpful to predict christmas holiday rental pattern.
