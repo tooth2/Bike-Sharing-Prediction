@@ -55,6 +55,8 @@ Both hour.csv and day.csv have the following fields, except hr which is not avai
 [1] Fanaee-T, Hadi, and Gama, Joao, "Event labeling combining ensemble detectors and background knowledge", Progress in Artificial Intelligence (2013): pp. 1-15, Springer Berlin Heidelberg
 
 ## Implementation Approach
+### Architecture
+
 ### Build Model 
 * Sigmoid activation function
 ### Backward Pass
@@ -73,17 +75,17 @@ The training loss is below 0.09 and the validation loss is below 0.18.
 ## Test Result Summary 
 |                          Test Result Summary                           |
 |------------------------------------------------------------------------|
-|* Produces good results when running the network on full data            |
-|* The activation function is a sigmoid                                   |
-|* The backpropagation implementation is correct                          |
-|* The forward pass implementation is correct                             |
-|* The learning_rate is reasonable                                        |
-|* The number of epochs is reasonable                                     |
-|* The number of hidden nodes is reasonable                               |
-|* The number of output nodes is correct                                  |
-|* The run method is correct                                              |
-|* The update_weights implementation is correct                           |
-|* The weights are updated correctly on training                          |
+| Produces good results when running the network on full data            |
+| The activation function is a sigmoid                                   |
+| The backpropagation implementation is correct                          |
+| The forward pass implementation is correct                             |
+| The learning_rate is reasonable                                        |
+| The number of epochs is reasonable                                     |
+| The number of hidden nodes is reasonable                               |
+| The number of output nodes is correct                                  |
+| The run method is correct                                              |
+| The update_weights implementation is correct                           |
+| The weights are updated correctly on training                          |
 
 ## Discussion
 Regarding to miss predicting data, there is a strong correlation between bike renting and seansoal data such as weather or holiday season. From Dec 22 to Dec 31, especially it's Christmas season, and data does not show similar pattern before/after Dec. 22. However, prediction model is trained/optimized based on normal days so that, unusual/unseen pattern cannot be accurately predictable. To improve this model,"holiday" value from two csv files should be adjusted before christmas till new years day or "seasonint" value should be adjusted to reflect "special holiday seanson" from Chirstmas even to New Years Eve. Further more At least a couple more years data collection would be helpful to predict christmas holiday rental pattern.
